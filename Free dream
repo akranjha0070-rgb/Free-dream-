@@ -1,303 +1,228 @@
-/* --- 1. THE CRIMSON LOOM COLOR PALETTE --- */
-:root {
-    --dark-black: #050505;
-    --crimson-red: #8B0000;
-    --deep-purple: #4B0082;
-    --gold-accent: #FFD700;
-    --text-color: #f0f0f0;
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+
+export default function FantasyForgeAI() {
+  return (
+    <Router>
+      <div style={styles.appContainer}>
+        <nav style={styles.navbar}>
+          <Link to="/" style={styles.navLink}>
+            Fantasy Forge AI
+          </Link>
+          <div>
+            <Link to="/generate" style={styles.navLink}>
+              Create Story
+            </Link>
+            <Link to="/library" style={styles.navLink}>
+              Library
+            </Link>
+            <Link to="/contact" style={styles.navLink}>
+              Contact + Community
+            </Link>
+          </div>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/generate" element={<StoryGenerator />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/contact" element={<ContactCommunity />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-/* Base Styles */
-body {
-    background-color: var(--dark-black);
-    color: var(--text-color);
-    font-family: 'Georgia', serif; /* Elegant Serif for the title */
+function LandingPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div style={styles.landingContainer}>
+      <h1 style={styles.title}>Create Bold Adult Stories with AI</h1>
+      <button
+        style={styles.ctaButton}
+        onClick={() => navigate("/generate")}
+        aria-label="Start Creating Stories"
+      >
+        Start Creating
+      </button>
+    </div>
+  );
 }
 
-/* --- 2. AGE GATE STYLES --- */
-.age-gate-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
+function StoryGenerator() {
+  const [prompt, setPrompt] = useState("");
+  const [story, setStory] = useState("");
+  const [loading, setLoading] = useState(false);
 
-.age-gate-box {
-    background-color: #1a0a0a;
-    border: 2px solid var(--crimson-red);
-    box-shadow: 0 0 40px rgba(139, 0, 0, 0.6);
-    padding: 40px;
-    border-radius: 12px;
-    max-width: 450px;
-    text-align: center;
-}
-
-/* --- 3. GLOBAL GLOW & SHADOW EFFECTS --- */
-
-/* Text Shadow for the Logo/Title */
-.logo-text-shadow {
-    text-shadow: 0 0 8px var(--gold-accent), 0 0 15px rgba(255, 215, 0, 0.5);
-}
-
-/* Hero Title Glow */
-.title-glow-shadow {
-    text-shadow: 0 0 10px var(--crimson-red), 0 0 25px rgba(139, 0, 0, 0.8), 0 0 5px var(--gold-accent);
-}
-
-/* Hero Section Background Gradient */
-.bg-hero-gradient {
-    background: radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.3) 0%, rgba(139, 0, 0, 0.3) 40%, rgba(5, 5, 5, 1) 90%);
-}
-
-/* --- 4. BUTTON STYLES (The Glowing Buttons) --- */
-
-/* Crimson Glow Button (Main CTA) */
-.button-glow-crimson {
-    background: var(--crimson-red);
-    color: white;
-    padding: 12px 30px;
-    font-weight: bold;
-    border: 1px solid var(--gold-accent);
-    border-radius: 50px;
-    box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
-    transition: all 0.3s ease;
-}
-
-.button-glow-crimson:hover {
-    background: #a30000;
-    box-shadow: 0 0 25px rgba(139, 0, 0, 1.0), 0 0 5px var(--gold-accent);
-}
-
-/* Gold Glow Button (Membership) */
-.button-glow-gold {
-    background: var(--dark-black);
-    color: var(--gold-accent);
-    padding: 8px 20px;
-    font-weight: 600;
-    border: 1px solid var(--gold-accent);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.button-glow-gold:hover {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    color: white;
-}
-
-/* Crimson Outline Button (Age Gate "No") */
-.button-crimson-outline {
-    background: transparent;
-    color: var(--crimson-red);
-    padding: 12px 30px;
-    font-weight: bold;
-    border: 2px solid var(--crimson-red);
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.button-crimson-outline:hover {
-    background: var(--crimson-red);
-    color: white;
-}
-
-/* Navigation Link Style */
-.nav-link {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    padding: 5px 0;
-    position: relative;
-}
-
-.nav-link:hover {
-    color: var(--crimson-red);
-}
-
-/* Underline effect on hover */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    background-color: var(--gold-accent);
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* --- 5. EYE-CATCHING ICON PANEL STYLES --- */
-
-.feature-card {
-    background-color: #151515;
-    border: 1px solid var(--deep-purple);
-    padding: 30px;
-    border-radius: 10px;
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
-
-.feature-card:hover {
-    background-color: #1a0a0a;
-    border-color: var(--crimson-red);
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
-}
-
-.icon-glow {
-    color: var(--gold-accent);
-    text-shadow: 0 0 10px var(--deep-purple), 0 0 20px rgba(255, 215, 0, 0.5);
-    transition: text-shadow 0.4s ease;
-}
-
-.feature-card:hover .icon-glow {
-    text-shadow: 0 0 15px var(--crimson-red), 0 0 30px rgba(255, 215, 0, 0.7);
-}
-
-/* Utility Classes (Custom Tailwind-like properties) */
-.text-gold-accent { color: var(--gold-accent); }
-.bg-dark-black { background-color: var(--dark-black); }
-.border-crimson-red\/30 { border-color: rgba(139, 0, 0, 0.3); }
-
-/* Responsive adjustments for the title */
-@media (max-width: 768px) {
-    .title-glow-shadow {
-        font-size: 3.5rem;
+  const generateStory = async () => {
+    if (!prompt.trim()) {
+      alert("Please enter a story prompt.");
+      return;
     }
+
+    setLoading(true);
+    setStory("");
+
+    try {
+      // Placeholder for AI text generation API call
+      await new Promise((res) => setTimeout(res, 1500));
+      setStory(
+        `Generated story for prompt: "${prompt}"\n\nOnce upon a time, in a world crafted by fantasy and bold imagination...`
+      );
+    } catch (error) {
+      alert("Error generating story. Please try again.");
+    }
+
+    setLoading(false);
+  };
+
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Type a prompt to create your story</h2>
+      <textarea
+        style={styles.textarea}
+        value={prompt}
+        onChange={(e) => setPrompt(e.target.value)}
+        placeholder="Enter your story prompt here..."
+        rows={6}
+      />
+      <button
+        style={styles.button}
+        onClick={generateStory}
+        disabled={loading}
+        aria-label="Generate Story"
+      >
+        {loading ? "Creating..." : "Generate Story"}
+      </button>
+
+      {story && (
+        <pre style={styles.storyOutput} aria-live="polite" aria-label="Generated Story">
+          {story}
+        </pre>
+      )}
+    </div>
+  );
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sultry Playground: The Crimson Loom</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-dark-black text-white font-sans overflow-x-hidden">
 
-    <div id="age-gate" class="age-gate-overlay">
-        <div class="age-gate-box">
-            <h1 class="text-3xl font-serif text-gold-accent mb-6">Enter The Crimson Loom</h1>
-            <p class="text-lg mb-8 text-gray-300">This website contains explicit, AI-generated content of a mature nature. You must be at least 18 years of age (or the age of majority in your jurisdiction) to proceed.</p>
-            
-            <div class="flex justify-around space-x-4">
-                <button id="age-yes" class="button-glow-crimson hover:scale-105 transition-transform duration-300">
-                    I Am 18+
-                </button>
-                <button id="age-no" class="button-crimson-outline hover:scale-105 transition-transform duration-300" onclick="window.location.href='https://www.google.com';">
-                    I Am Under 18
-                </button>
-            </div>
-        </div>
+function Library() {
+  return (
+    <div style={styles.libraryContainer}>
+      <h2 style={styles.heading}>Your Library</h2>
+      <p style={styles.text}>
+        Access your saved stories and cinematic videos here — feature coming soon!
+      </p>
     </div>
+  );
+}
 
-    <div id="main-content" class="min-h-screen opacity-0 transition-opacity duration-1000">
-
-        <header class="w-full p-4 flex justify-between items-center z-20 bg-dark-black/90 sticky top-0 border-b border-crimson-red/30">
-            <a href="#" class="text-3xl font-serif text-gold-accent logo-text-shadow">Sultry Playground</a>
-            <nav class="space-x-8 hidden md:flex">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#library" class="nav-link">The Archive</a>
-                <a href="#alchemist" class="nav-link">AI Alchemist</a>
-                <a href="#membership" class="nav-link button-glow-gold px-4 py-2">Membership</a>
-            </nav>
-            <button class="md:hidden text-2xl text-gold-accent"><i class="fas fa-bars"></i></button>
-        </header>
-
-        <section id="home" class="h-screen flex items-center justify-center relative overflow-hidden text-center p-4">
-            <div class="absolute inset-0 z-0 bg-hero-gradient"></div>
-            
-            <div class="z-10 max-w-5xl">
-                <h1 class="text-7xl md:text-8xl font-serif font-bold leading-tight text-white title-glow-shadow">
-                    Where Desire Takes <span class="text-gold-accent">Shape</span>
-                </h1>
-                <p class="mt-4 text-2xl font-light text-gray-300 max-w-3xl mx-auto">
-                    Craft breathtaking, uncensored stories and cinematic visuals with our proprietary AI engine.
-                </p>
-                <button class="mt-10 px-10 py-4 text-xl button-glow-crimson transform hover:scale-105 transition-transform duration-500">
-                    Start Your Creation
-                </button>
-            </div>
-        </section>
-
-        <section id="features" class="py-20 bg-[#0c0c0c] text-center">
-            <h2 class="text-5xl font-serif text-white mb-12">The Tools of Imagination</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
-                
-                <div class="feature-card">
-                    <i class="fas fa-pen-fancy text-6xl icon-glow mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2 text-gold-accent">The Private Muse</h3>
-                    <p class="text-gray-400">Unlimited, interactive story generation with custom characters and plots.</p>
-                </div>
-
-                <div class="feature-card">
-                    <i class="fas fa-video text-6xl icon-glow mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2 text-gold-accent">Cinematic Alchemist</h3>
-                    <p class="text-gray-400">Transform scenes into high-resolution, animated visual masterpieces.</p>
-                </div>
-
-                <div class="feature-card">
-                    <i class="fas fa-microphone-alt text-6xl icon-glow mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2 text-gold-accent">Voice of Velvet</h3>
-                    <p class="text-gray-400">Select professional AI voices for seductive, immersive audio experiences.</p>
-                </div>
-                
-            </div>
-        </section>
-
-        <footer class="py-8 bg-dark-black border-t border-crimson-red/30 text-center text-gray-500">
-            <p>&copy; 2025 Sultry Playground. All Content is Fictional, Simulated, and AI-Generated. | <a href="#" class="text-gray-400 hover:text-crimson-red">TOS</a> | <a href="#" class="text-gray-400 hover:text-crimson-red">Compliance</a></p>
-        </footer>
-
+function ContactCommunity() {
+  return (
+    <div style={styles.libraryContainer}>
+      <h2 style={styles.heading}>Contact & Community</h2>
+      <p style={styles.text}>
+        We'd love your feedback! Engage safely with our community. Feature coming soon.
+      </p>
     </div>
+  );
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const ageGate = document.getElementById('age-gate');
-            const mainContent = document.getElementById('main-content');
-            const ageYes = document.getElementById('age-yes');
-            
-            // Check if the age cookie exists
-            const isAgeConfirmed = document.cookie.split(';').some((item) => item.trim().startsWith('age_confirmed=true'));
-
-            if (isAgeConfirmed) {
-                // If confirmed, hide the gate and show content immediately
-                ageGate.style.display = 'none';
-                mainContent.style.opacity = '1';
-            } else {
-                // If not confirmed, show the age gate
-                ageGate.style.display = 'flex';
-                
-                ageYes.addEventListener('click', () => {
-                    // Set a cookie for 30 days (for convenience, not true legal verification)
-                    const date = new Date();
-                    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
-                    document.cookie = `age_confirmed=true; expires=${date.toUTCString()}; path=/`;
-                    
-                    // Fade out age gate and fade in main content
-                    ageGate.style.opacity = '0';
-                    setTimeout(() => {
-                        ageGate.style.display = 'none';
-                        mainContent.style.opacity = '1';
-                    }, 500); // Match CSS transition time
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+const styles = {
+  appContainer: {
+    backgroundColor: "#000",
+    minHeight: "100vh",
+    color: "#eee",
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+  },
+  navbar: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "1rem 2rem",
+    borderBottom: "1px solid #550055",
+    backgroundColor: "#110011",
+  },
+  navLink: {
+    margin: "0 1rem",
+    color: "#ff0080",
+    textDecoration: "none",
+    fontWeight: "bold",
+    fontSize: "1.1rem",
+  },
+  landingContainer: {
+    minHeight: "80vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+  },
+  title: {
+    fontSize: "3rem",
+    color: "#ff007f",
+    textShadow:
+      "0 0 8px #ff007f, 0 0 20px #b30059, 0 0 40px #ff007f, 0 0 60px #ff007f",
+    marginBottom: "2rem",
+  },
+  ctaButton: {
+    backgroundColor: "#6a006a",
+    border: "none",
+    color: "#fff",
+    padding: "1rem 3rem",
+    fontSize: "1.5rem",
+    borderRadius: "12px",
+    cursor: "pointer",
+    boxShadow: "0 0 10px #ff00bf",
+    transition: "background-color 0.3s ease",
+  },
+  container: {
+    maxWidth: "720px",
+    margin: "2rem auto",
+    padding: "1rem",
+  },
+  heading: {
+    color: "#bb00bb",
+    fontSize: "1.8rem",
+    marginBottom: "1rem",
+  },
+  textarea: {
+    width: "100%",
+    fontSize: "1.1rem",
+    padding: "1rem",
+    borderRadius: "8px",
+    border: "2px solid #660066",
+    backgroundColor: "#180018",
+    color: "#eee",
+    resize: "vertical",
+    marginBottom: "1rem",
+  },
+  button: {
+    padding: "1rem 2rem",
+    fontSize: "1.1rem",
+    borderRadius: "8px",
+    border: "none",
+    backgroundColor: "#b300b3",
+    color: "#fff",
+    cursor: "pointer",
+    boxShadow: "0 0 12px #b300b3",
+    transition: "background-color 0.3s",
+  },
+  storyOutput: {
+    whiteSpace: "pre-wrap",
+    marginTop: "2rem",
+    backgroundColor: "#220022",
+    padding: "1rem",
+    borderRadius: "8px",
+    fontSize: "1rem",
+    color: "#ddd",
+    boxShadow: "0 0 10px #a800a8",
+  },
+  libraryContainer: {
+    maxWidth: "720px",
+    margin: "2rem auto",
+    padding: "1rem",
+    textAlign: "center",
+  },
+  text: {
+    color: "#ccc",
+  },
+};
