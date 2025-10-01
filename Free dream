@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fantasy Forge AI - Create Bold Adult Stories</title>
-    <!-- Load Tailwind CSS -->
+    <!-- Load Tailwind CSS for professional, responsive design -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Google Fonts: Inter (Body) and Michroma (Headlines) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
+    
     <style>
-        /* Custom Tailwind Configuration for Neon Colors */
+        /* Custom Configuration for Neon/Dark Theme */
         :root {
-            --red-accent: #FF0033;
-            --purple-accent: #9900FF;
-            --dark-gray: #0d0d0d;
+            --red-accent: #FF0033; /* Primary action color */
+            --purple-accent: #9900FF; /* Secondary feature color */
+            --dark-gray: #0d0d0d; /* Background for cards/sections */
         }
 
-        /* Set global font and background */
+        /* Global styles for dark mode and typography */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #000000;
@@ -24,18 +25,18 @@
             min-height: 100vh;
         }
 
-        /* Custom Neon Glow Utilities */
+        /* Neon Glow Effects */
         .text-red-neon { color: var(--red-accent); text-shadow: 0 0 10px var(--red-accent); }
         .text-purple-neon { color: var(--purple-accent); text-shadow: 0 0 10px var(--purple-accent); }
 
-        /* General Container for Centering Content */
+        /* Content Container */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 1rem;
         }
 
-        /* --- Age Gate Overlay Styling --- */
+        /* --- Age Gate Styling (MANDATORY for Mature Content) --- */
         #age-gate-overlay {
             position: fixed;
             top: 0;
@@ -53,14 +54,14 @@
             background: var(--dark-gray);
             padding: 3rem 2rem;
             border: 2px solid var(--purple-accent);
-            box-shadow: 0 0 30px var(--purple-accent); /* Neon Glow */
+            box-shadow: 0 0 30px var(--purple-accent); 
             text-align: center;
             border-radius: 12px;
             max-width: 90%;
             width: 400px;
         }
 
-        /* --- CTA Button Base Styling --- */
+        /* --- CTA Button Styling --- */
         .cta-button {
             display: block;
             width: 100%;
@@ -75,7 +76,6 @@
             cursor: pointer;
         }
 
-        /* Primary CTA Button (Red Accent) */
         .primary-cta {
             background: var(--red-accent);
             color: white;
@@ -87,22 +87,8 @@
             box-shadow: 0 0 30px #ff4d66;
             transform: translateY(-2px);
         }
-
-        /* Secondary CTA Button (Purple Accent) */
-        .secondary-cta {
-            background: var(--dark-gray);
-            color: var(--purple-accent);
-            border: 2px solid var(--purple-accent);
-            box-shadow: 0 0 10px var(--purple-accent) inset;
-        }
-
-        .secondary-cta:hover {
-            background: var(--purple-accent);
-            color: var(--dark-gray);
-            box-shadow: 0 0 30px var(--purple-accent);
-        }
         
-        /* LLM Helper Button (Subtle Glow) */
+        /* LLM Helper Button (AI feature buttons) */
         .llm-helper-button {
             background-color: #1a0033; /* Darker Purple */
             color: var(--purple-accent);
@@ -118,7 +104,7 @@
             transform: scale(1.02);
         }
 
-        /* TTS Playback Button (Special styling for audio feature) */
+        /* TTS Playback Button */
         #play-dialogue-btn {
             background-color: var(--red-accent);
             color: white;
@@ -130,85 +116,12 @@
             transition: all 0.2s;
             border-radius: 6px;
         }
-        #play-dialogue-btn:hover:not(:disabled) {
-            box-shadow: 0 0 15px var(--red-accent);
-        }
         #play-dialogue-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
         
-        /* --- Hero Section & Banner Styling --- */
-        .hero-section {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 4rem 1rem;
-            position: relative; /* Needed for positioning internal banners */
-            overflow: hidden;
-            border-bottom: 2px solid rgba(153, 0, 255, 0.1); /* Subtle border */
-        }
-
-        .hero-banner-visuals {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .hero-banner-visuals img {
-            position: absolute;
-            height: 100%;
-            width: auto;
-            object-fit: cover;
-            opacity: 0.2; /* Darken and blend */
-            filter: blur(2px) grayscale(50%); /* Cinematic effect */
-            transition: opacity 0.5s ease;
-        }
-        
-        /* Left Image Positioning (Mobile: smaller, Desktop: prominent left) */
-        .hero-banner-visuals .img-left {
-            top: 0;
-            left: 0;
-            transform: scale(0.6) translateX(-50%) rotate(5deg);
-            transform-origin: top left;
-        }
-        
-        /* Right Image Positioning (Mobile: smaller, Desktop: prominent right) */
-        .hero-banner-visuals .img-right {
-            bottom: 0;
-            right: 0;
-            transform: scale(0.6) translateX(50%) rotate(-5deg);
-            transform-origin: bottom right;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-banner-visuals .img-left {
-                height: 120%;
-                opacity: 0.15;
-                transform: scale(1) translateX(0) rotate(5deg);
-                left: -20%;
-                top: -10%;
-            }
-            .hero-banner-visuals .img-right {
-                height: 120%;
-                opacity: 0.15;
-                transform: scale(1) translateX(0) rotate(-5deg);
-                right: -20%;
-                bottom: -10%;
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10; /* Ensure text is above the visuals */
-            max-width: 4xl;
-            margin: auto;
-        }
-
+        /* LLM Output Box for generated text */
         .llm-output-box {
             white-space: pre-wrap;
             text-align: left;
@@ -232,7 +145,7 @@
 </head>
 <body class="bg-black">
 
-    <!-- Age Verification Overlay (Initially Visible) -->
+    <!-- Age Verification Overlay (Secures the site for mature content) -->
     <div id="age-gate-overlay">
         <div class="age-gate-box">
             <h2 class="text-3xl font-bold mb-4 text-purple-neon" style="font-family: 'Michroma', sans-serif;">
@@ -267,25 +180,24 @@
         </nav>
 
         <!-- --- 1. Hero Landing Page --- -->
-        <section id="hero" class="hero-section">
+        <section id="hero" class="min-h-[90vh] flex items-center justify-center text-center py-16 relative overflow-hidden border-b border-gray-900">
             
-            <!-- Dynamic Background Banner Visuals: Bold Female Characters -->
-            <div class="hero-banner-visuals">
-                <!-- Placeholder for Bold Female Character 1 (Red Tones) -->
-                <img class="img-left hidden lg:block" 
-                     src="https://placehold.co/800x1200/220000/FF0033?text=BOLD+CHARACTER+A" 
-                     alt="Cinematic Female Character Visual 1"
+            <!-- Dynamic Background Visuals (Placeholders for Cinematic Effect) -->
+            <div class="absolute w-full h-full pointer-events-none overflow-hidden">
+                <!-- Use placehold.co for image fallbacks -->
+                <img class="absolute top-0 left-0 h-full w-auto object-cover opacity-15 blur-sm hidden lg:block" 
+                     src="https://placehold.co/800x1200/220000/FF0033?text=BOLD+FANTASY+SCENE" 
+                     alt="Cinematic Background 1"
                      onerror="this.style.display='none'"> 
 
-                <!-- Placeholder for Bold Female Character 2 (Purple Tones) -->
-                <img class="img-right hidden lg:block" 
-                     src="https://placehold.co/800x1200/08001a/9900FF?text=BOLD+CHARACTER+B" 
-                     alt="Cinematic Female Character Visual 2"
+                <img class="absolute bottom-0 right-0 h-full w-auto object-cover opacity-15 blur-sm hidden lg:block" 
+                     src="https://placehold.co/800x1200/08001a/9900FF?text=BOLD+CYBERPUNK+SCENE" 
+                     alt="Cinematic Background 2"
                      onerror="this.style.display='none'">
             </div>
 
             <!-- Foreground Content -->
-            <div class="hero-content max-w-4xl mx-auto">
+            <div class="container relative z-10 max-w-4xl mx-auto">
                 <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight" style="font-family: 'Michroma', sans-serif;">
                     Forge Your Fantasies.
                     <span class="text-red-neon block mt-2">
@@ -293,27 +205,27 @@
                     </span>
                 </h1>
                 <p class="text-lg sm:text-xl opacity-80 mb-10 max-w-2xl mx-auto">
-                    Create **Bold Adult Stories** with AI. Instantly generate cinematic video, background music, lip-synced dialogues, and immersive audio narration.
+                    Create **Bold Adult Stories** in English, Hindi, or Urdu with AI. Instantly generate detailed narratives, dialogue, and conceptual video/audio.
                 </p>
                 <a href="#generator" class="cta-button primary-cta sm:w-auto sm:inline-block">
-                    Start Creating
+                    Start Creating Now
                 </a>
-                <p class="mt-4 text-sm opacity-60">No credit card required to start generating short stories.</p>
+                <p class="mt-4 text-sm opacity-60">Requires free Gemini API Key for full functionality.</p>
             </div>
         </section>
 
-        <!-- --- 2. Story Generator Page --- -->
+        <!-- --- 2. Story Generator Section --- -->
         <section id="generator" class="py-20 container">
             <h2 class="text-4xl font-bold text-center mb-12 text-purple-neon" style="font-family: 'Michroma', sans-serif;">
                 The Forge: Text to Cinematic Story
             </h2>
             <div class="bg-dark-gray p-6 sm:p-10 rounded-xl border border-purple-accent/50 shadow-xl">
-                <label for="prompt-input" class="block text-lg font-medium mb-3">Your Core Idea (A detailed prompt produces the best videos)</label>
+                <label for="prompt-input" class="block text-lg font-medium mb-3">Your Core Idea (Use Hindi, Urdu, or English)</label>
                 <textarea id="prompt-input" rows="4" placeholder="Describe your scene, characters, and desired tone here..."
                     class="w-full p-4 mb-3 bg-black text-white border border-purple-accent/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-accent transition"
                 >A rogue assassin discovers a hidden magical library in the cyberpunk city, seeking knowledge to reverse a curse placed on her. Her handler attempts to stop her.</textarea>
 
-                <!-- LLM Helper Buttons -->
+                <!-- AI Helper Buttons (Real working AI features) -->
                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mb-6">
                     <button onclick="refinePromptWithGemini()" class="w-full llm-helper-button flex-1">
                         ✨ Narrative Refiner (Get cinematic ideas)
@@ -325,7 +237,7 @@
                 
                 <!-- LLM Output Display -->
                 <div id="llm-output-container" class="mb-6">
-                    <!-- Output will be displayed here -->
+                    <!-- AI output and TTS player will be displayed here -->
                 </div>
 
 
@@ -336,6 +248,7 @@
                         <option value="4K_PREMIUM">Cinematic 4K (Premium Max)</option>
                     </select>
 
+                    <!-- Main Generation Button (Simulates video/music generation) -->
                     <button onclick="handleGeneration()" class="w-full sm:w-2/3 cta-button primary-cta">
                         <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         Forge Story & Video
@@ -343,55 +256,22 @@
                 </div>
             </div>
 
-            <!-- Conceptual Status Box -->
+            <!-- Conceptual Status Box for the simulated video process -->
             <div id="status-message" class="mt-8 p-4 rounded-lg text-center bg-gray-900 border border-gray-700 hidden transition-all duration-500">
                 Processing...
             </div>
         </section>
 
-        <!-- --- 3. Feature Showcase --- -->
-        <section class="py-20 container border-t border-gray-900">
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="p-6 bg-dark-gray rounded-xl border border-red-accent/50 shadow-lg hover:shadow-red-neon/30 transition duration-300">
-                    <h3 class="text-2xl font-bold mb-3 text-red-neon">Cinematic Video</h3>
-                    <p class="opacity-80">AI converts your narrative script into visually stunning, film-grade scenes with dynamic camera work and custom color grading.</p>
-                </div>
-                <div class="p-6 bg-dark-gray rounded-xl border border-purple-accent/50 shadow-lg hover:shadow-purple-neon/30 transition duration-300">
-                    <h3 class="text-2xl font-bold mb-3 text-purple-neon">Lip-Sync Dialogue</h3>
-                    <p class="opacity-80">Characters speak their lines naturally, featuring perfectly synced facial animations for the highest level of realism.</p>
-                </div>
-                <div class="p-6 bg-dark-gray rounded-xl border border-red-accent/50 shadow-lg hover:shadow-red-neon/30 transition duration-300">
-                    <h3 class="text-2xl font-bold mb-3 text-red-neon">Consistent Characters</h3>
-                    <p class="opacity-80">Lock your favorite character designs so they maintain the same appearance across new scenes, new stories, and new videos.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- --- 4. Library & Premium CTA --- -->
-        <section id="premium" class="py-20 bg-gray-900/50">
-            <div class="container text-center">
-                <h2 class="text-4xl font-bold mb-4 text-purple-neon" style="font-family: 'Michroma', sans-serif;">
-                    Unlock the Full Power of the Forge
-                </h2>
-                <p class="text-lg opacity-80 mb-10 max-w-3xl mx-auto">
-                    Go Premium for longer stories, cinematic 4K video quality, and dedicated character design slots.
-                </p>
-                <a href="#" class="cta-button secondary-cta sm:w-auto sm:inline-block">
-                    View Premium Tiers
-                </a>
-            </div>
-        </section>
-
-
-        <!-- Footer -->
+        <!-- --- Footer --- -->
         <footer class="container py-8 text-center text-sm opacity-60 border-t border-gray-900 mt-10">
             <p>&copy; 2025 Fantasy Forge AI. All rights reserved. | <a href="#" class="hover:text-red-accent">Terms</a> | <a href="#" class="hover:text-red-accent">Privacy</a></p>
-            <p class="mt-2">Join the discussion on our <a href="#" class="hover:text-purple-accent font-bold">Community Forum</a></p>
+            <p class="mt-2">Free site hosted via GitHub Pages.</p>
         </footer>
 
     </div>
 
     <script>
+        // --- CORE CONFIGURATION & SETUP ---
         const ageGateOverlay = document.getElementById('age-gate-overlay');
         const confirmAgeBtn = document.getElementById('confirm-age-btn');
         const mainContent = document.getElementById('main-content');
@@ -400,22 +280,77 @@
         const llmOutputContainer = document.getElementById('llm-output-container');
         
         // Gemini API Configuration
-        // NOTE: You must replace the empty apiKey with your actual key to use the AI features.
+        // IMPORTANT: Replace the empty string below with your actual Gemini API Key
         const apiKey = ""; 
         const apiUrlBase = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent";
 
-        // Global state for dialogue, used by the playback feature
+        // Global state for dialogue, used by the TTS playback feature
         let lastGeneratedDialogue = [];
 
-        // Define voices for the demo characters (Agent and Handler)
+        // Define voices for the demo characters (You can choose from the TTS voice list)
         const VOICE_MAP = {
             'Agent': 'Puck',    // Upbeat, quick voice
             'Handler': 'Kore'   // Firm, mature voice
         };
 
-        // --- Audio Utility Functions (for TTS PCM to WAV conversion) ---
+        // --- UTILITY FUNCTIONS ---
 
-        /** Converts a base64 encoded string to an ArrayBuffer. */
+        /** * Custom Fetch with Exponential Backoff for Robust API Calls
+         * Handles transient network/rate limit errors automatically.
+         */
+        async function exponentialBackoffFetch(url, options, retries = 3, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response;
+                    }
+                    if (response.status === 429 && i < retries - 1) { // Rate limit
+                        await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                        continue;
+                    }
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error! Status: ${response.status}. Body: ${errorText.substring(0, 100)}...`);
+                } catch (error) {
+                    if (i === retries - 1) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                }
+            }
+            throw new Error("API request failed after all retries.");
+        }
+        
+        /** Custom Message Box (Replaces alert/confirm) */
+        function showCustomMessage(message, type = 'info') {
+            const tempDiv = document.createElement('div');
+            tempDiv.className = 'fixed inset-x-0 top-0 p-4 text-center z-[100]';
+            let bgColor = (type === 'error') ? 'bg-red-900 border-red-700' : 'bg-gray-800 border-gray-700';
+            
+            tempDiv.innerHTML = `<div class="inline-block px-6 py-3 rounded-xl shadow-2xl ${bgColor} border text-white transition duration-500 ease-in-out transform translate-y-0">${message}</div>`;
+            document.body.appendChild(tempDiv);
+            setTimeout(() => {
+                tempDiv.style.opacity = '0';
+                setTimeout(() => tempDiv.remove(), 500);
+            }, 3000);
+        }
+
+        function showLLMLoading(message) {
+            llmOutputContainer.innerHTML = `
+                <div class="flex items-center justify-center p-4 text-purple-neon border border-purple-accent/30 rounded-lg">
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    ${message}
+                </div>
+            `;
+        }
+
+        function clearLLMOutput() {
+            llmOutputContainer.innerHTML = '';
+        }
+
+        // --- TTS AUDIO UTILITIES (Required for playing raw PCM audio) ---
+
         function base64ToArrayBuffer(base64) {
             const binaryString = atob(base64);
             const len = binaryString.length;
@@ -426,41 +361,79 @@
             return bytes.buffer;
         }
 
-        /** Writes a string to a DataView at a specific offset. */
         function writeString(view, offset, str) {
             for (let i = 0; i < str.length; i++) {
                 view.setUint8(offset + i, str.charCodeAt(i));
             }
         }
 
-        /** Writes a 32-bit integer to a DataView. */
-        function writeInt(view, offset, value) {
-            view.setUint32(offset, value, true);
-        }
+        function writeInt(view, offset, value) { view.setUint32(offset, value, true); }
+        function writeShort(view, offset, value) { view.setUint16(offset, value, true); }
 
-        /** Writes a 16-bit integer to a DataView. */
-        function writeShort(view, offset, value) {
-            view.setUint16(offset, value, true);
-        }
-
-        /** Converts raw PCM 16-bit audio data to a WAV Blob. */
+        /** Converts raw PCM 16-bit audio data to a playable WAV Blob. */
         function pcmToWav(pcm16, sampleRate) {
             const numChannels = 1; 
             const bitsPerSample = 16;
             const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
-            const blockAlign = numChannels * (bitsPerSample / 8);
             
-            // 44 bytes for the header + 2 * number of samples (since it's 16-bit)
             const buffer = new ArrayBuffer(44 + pcm16.length * 2);
             const view = new DataView(buffer);
 
             // RIFF chunk
             writeString(view, 0, 'RIFF');
-            writeInt(view, 4, 36 + pcm16.length * 2); // File size
+            writeInt(view, 4, 36 + pcm16.length * 2); 
             writeString(view, 8, 'WAVE');
 
             // fmt chunk
             writeString(view, 12, 'fmt ');
-            writeInt(view, 16, 16);             // fmt sub-chunk size
-            writeShort(view, 20, 1);            // Audio format (1 for PCM)
-        
+            writeInt(view, 16, 16);             
+            writeShort(view, 20, 1);            // PCM format
+            writeShort(view, 22, numChannels);  
+            writeInt(view, 24, sampleRate);     
+            writeInt(view, 28, byteRate);       
+            writeShort(view, 32, numChannels * (bitsPerSample / 8)); // Block Align
+            writeShort(view, 34, bitsPerSample);
+
+            // data chunk
+            writeString(view, 36, 'data');
+            writeInt(view, 40, pcm16.length * 2); 
+
+            // Write PCM data
+            let offset = 44;
+            for (let i = 0; i < pcm16.length; i++) {
+                view.setInt16(offset, pcm16[i], true); 
+                offset += 2;
+            }
+
+            return new Blob([buffer], { type: 'audio/wav' });
+        }
+
+
+        // --- CORE GEMINI LLM FEATURES ---
+
+        /**
+         * 1. Narrative Refiner: Makes the user's prompt professional and cinematic.
+         */
+        async function refinePromptWithGemini() {
+            const userQuery = promptInput.value.trim();
+            if (!userQuery) {
+                showCustomMessage("Please enter a core idea first to refine it.", 'error');
+                return;
+            }
+            
+            showLLMLoading("Narrative Refiner thinking up cinematic details...");
+            clearLLMOutput();
+            lastGeneratedDialogue = []; 
+            
+            const systemPrompt = `You are a world-class Cinematic Story Editor for an adult fantasy platform. Your task is to take a user's simple story idea and refine it into a detailed, visually descriptive prompt. Enhance the mood, setting, lighting, tone, and action. Provide the refined prompt as a single, powerful paragraph for a text-to-video AI model. Maintain a mature, bold tone. IMPORTANT: The user may provide the prompt in Hindi or Urdu; ensure your output is also highly descriptive and professional, regardless of the input language.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const response = await exponentialBackoffFetch(`${apiUrlBase}?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    bod
