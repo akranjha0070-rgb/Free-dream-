@@ -1,439 +1,303 @@
+/* --- 1. THE CRIMSON LOOM COLOR PALETTE --- */
+:root {
+    --dark-black: #050505;
+    --crimson-red: #8B0000;
+    --deep-purple: #4B0082;
+    --gold-accent: #FFD700;
+    --text-color: #f0f0f0;
+}
+
+/* Base Styles */
+body {
+    background-color: var(--dark-black);
+    color: var(--text-color);
+    font-family: 'Georgia', serif; /* Elegant Serif for the title */
+}
+
+/* --- 2. AGE GATE STYLES --- */
+.age-gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.age-gate-box {
+    background-color: #1a0a0a;
+    border: 2px solid var(--crimson-red);
+    box-shadow: 0 0 40px rgba(139, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* --- 3. GLOBAL GLOW & SHADOW EFFECTS --- */
+
+/* Text Shadow for the Logo/Title */
+.logo-text-shadow {
+    text-shadow: 0 0 8px var(--gold-accent), 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Hero Title Glow */
+.title-glow-shadow {
+    text-shadow: 0 0 10px var(--crimson-red), 0 0 25px rgba(139, 0, 0, 0.8), 0 0 5px var(--gold-accent);
+}
+
+/* Hero Section Background Gradient */
+.bg-hero-gradient {
+    background: radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.3) 0%, rgba(139, 0, 0, 0.3) 40%, rgba(5, 5, 5, 1) 90%);
+}
+
+/* --- 4. BUTTON STYLES (The Glowing Buttons) --- */
+
+/* Crimson Glow Button (Main CTA) */
+.button-glow-crimson {
+    background: var(--crimson-red);
+    color: white;
+    padding: 12px 30px;
+    font-weight: bold;
+    border: 1px solid var(--gold-accent);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(139, 0, 0, 0.8);
+    transition: all 0.3s ease;
+}
+
+.button-glow-crimson:hover {
+    background: #a30000;
+    box-shadow: 0 0 25px rgba(139, 0, 0, 1.0), 0 0 5px var(--gold-accent);
+}
+
+/* Gold Glow Button (Membership) */
+.button-glow-gold {
+    background: var(--dark-black);
+    color: var(--gold-accent);
+    padding: 8px 20px;
+    font-weight: 600;
+    border: 1px solid var(--gold-accent);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.button-glow-gold:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    color: white;
+}
+
+/* Crimson Outline Button (Age Gate "No") */
+.button-crimson-outline {
+    background: transparent;
+    color: var(--crimson-red);
+    padding: 12px 30px;
+    font-weight: bold;
+    border: 2px solid var(--crimson-red);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.button-crimson-outline:hover {
+    background: var(--crimson-red);
+    color: white;
+}
+
+/* Navigation Link Style */
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--crimson-red);
+}
+
+/* Underline effect on hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--gold-accent);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* --- 5. EYE-CATCHING ICON PANEL STYLES --- */
+
+.feature-card {
+    background-color: #151515;
+    border: 1px solid var(--deep-purple);
+    padding: 30px;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    background-color: #1a0a0a;
+    border-color: var(--crimson-red);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+}
+
+.icon-glow {
+    color: var(--gold-accent);
+    text-shadow: 0 0 10px var(--deep-purple), 0 0 20px rgba(255, 215, 0, 0.5);
+    transition: text-shadow 0.4s ease;
+}
+
+.feature-card:hover .icon-glow {
+    text-shadow: 0 0 15px var(--crimson-red), 0 0 30px rgba(255, 215, 0, 0.7);
+}
+
+/* Utility Classes (Custom Tailwind-like properties) */
+.text-gold-accent { color: var(--gold-accent); }
+.bg-dark-black { background-color: var(--dark-black); }
+.border-crimson-red\/30 { border-color: rgba(139, 0, 0, 0.3); }
+
+/* Responsive adjustments for the title */
+@media (max-width: 768px) {
+    .title-glow-shadow {
+        font-size: 3.5rem;
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Forge AI - Create Bold Adult Stories</title>
-    <!-- Load Tailwind CSS for professional, responsive design -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Google Fonts: Inter (Body) and Michroma (Headlines) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Custom Configuration for Neon/Dark Theme */
-        :root {
-            --red-accent: #FF0033; /* Primary action color */
-            --purple-accent: #9900FF; /* Secondary feature color */
-            --dark-gray: #0d0d0d; /* Background for cards/sections */
-        }
-
-        /* Global styles for dark mode and typography */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #f0f0f0;
-            min-height: 100vh;
-        }
-
-        /* Neon Glow Effects */
-        .text-red-neon { color: var(--red-accent); text-shadow: 0 0 10px var(--red-accent); }
-        .text-purple-neon { color: var(--purple-accent); text-shadow: 0 0 10px var(--purple-accent); }
-
-        /* Content Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        /* --- Age Gate Styling (MANDATORY for Mature Content) --- */
-        #age-gate-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-
-        .age-gate-box {
-            background: var(--dark-gray);
-            padding: 3rem 2rem;
-            border: 2px solid var(--purple-accent);
-            box-shadow: 0 0 30px var(--purple-accent); 
-            text-align: center;
-            border-radius: 12px;
-            max-width: 90%;
-            width: 400px;
-        }
-
-        /* --- CTA Button Styling --- */
-        .cta-button {
-            display: block;
-            width: 100%;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-
-        .primary-cta {
-            background: var(--red-accent);
-            color: white;
-            box-shadow: 0 0 15px var(--red-accent);
-        }
-
-        .primary-cta:hover {
-            background: #ff4d66;
-            box-shadow: 0 0 30px #ff4d66;
-            transform: translateY(-2px);
-        }
-        
-        /* LLM Helper Button (AI feature buttons) */
-        .llm-helper-button {
-            background-color: #1a0033; /* Darker Purple */
-            color: var(--purple-accent);
-            border: 1px solid var(--purple-accent);
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 0 5px var(--purple-accent) inset;
-        }
-        .llm-helper-button:hover {
-            box-shadow: 0 0 15px var(--purple-accent);
-            transform: scale(1.02);
-        }
-
-        /* TTS Playback Button */
-        #play-dialogue-btn {
-            background-color: var(--red-accent);
-            color: white;
-            border: 1px solid var(--red-accent);
-            box-shadow: 0 0 5px var(--red-accent);
-            padding: 0.5rem 1rem;
-            margin-top: 1rem;
-            font-weight: 700;
-            transition: all 0.2s;
-            border-radius: 6px;
-        }
-        #play-dialogue-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        /* LLM Output Box for generated text */
-        .llm-output-box {
-            white-space: pre-wrap;
-            text-align: left;
-            padding: 1rem;
-            background-color: #080808;
-            border: 1px solid rgba(153, 0, 255, 0.2);
-            border-radius: 8px;
-            max-height: 400px;
-            overflow-y: auto;
-            margin-top: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .dialogue-speaker {
-            font-weight: bold;
-            color: var(--red-accent);
-            margin-top: 0.5rem;
-            display: block;
-        }
-    </style>
+    <title>Sultry Playground: The Crimson Loom</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-black">
+<body class="bg-dark-black text-white font-sans overflow-x-hidden">
 
-    <!-- Age Verification Overlay (Secures the site for mature content) -->
-    <div id="age-gate-overlay">
+    <div id="age-gate" class="age-gate-overlay">
         <div class="age-gate-box">
-            <h2 class="text-3xl font-bold mb-4 text-purple-neon" style="font-family: 'Michroma', sans-serif;">
-                Access Restricted (18+)
-            </h2>
-            <p class="mb-6 opacity-80">
-                You must be 18 years or older to access **Fantasy Forge AI**. 
-                Content includes mature narratives and themes.
-            </p>
-            <button id="confirm-age-btn" class="cta-button primary-cta mb-3">
-                I Confirm I Am 18+
-            </button>
-            <p class="text-xs opacity-50">
-                By clicking, you confirm you meet the legal age requirement for this content.
-            </p>
+            <h1 class="text-3xl font-serif text-gold-accent mb-6">Enter The Crimson Loom</h1>
+            <p class="text-lg mb-8 text-gray-300">This website contains explicit, AI-generated content of a mature nature. You must be at least 18 years of age (or the age of majority in your jurisdiction) to proceed.</p>
+            
+            <div class="flex justify-around space-x-4">
+                <button id="age-yes" class="button-glow-crimson hover:scale-105 transition-transform duration-300">
+                    I Am 18+
+                </button>
+                <button id="age-no" class="button-crimson-outline hover:scale-105 transition-transform duration-300" onclick="window.location.href='https://www.google.com';">
+                    I Am Under 18
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Main Content (Hidden until age is confirmed) -->
-    <div id="main-content" class="hidden">
-        
-        <!-- Header & Navigation -->
-        <nav class="container flex justify-between items-center py-4 border-b border-gray-900 sticky top-0 bg-black/90 backdrop-blur-sm z-40">
-            <a href="#hero" class="text-2xl font-bold text-red-neon" style="font-family: 'Michroma', sans-serif;">
-                Fantasy Forge
-            </a>
-            <div class="flex space-x-4">
-                <a href="#generator" class="hover:text-purple-neon transition duration-200 hidden sm:inline">Create</a>
-                <a href="#library" class="hover:text-purple-neon transition duration-200 hidden sm:inline">Library</a>
-                <a href="#premium" class="hover:text-red-neon transition duration-200 font-bold">Premium</a>
-            </div>
-        </nav>
+    <div id="main-content" class="min-h-screen opacity-0 transition-opacity duration-1000">
 
-        <!-- --- 1. Hero Landing Page --- -->
-        <section id="hero" class="min-h-[90vh] flex items-center justify-center text-center py-16 relative overflow-hidden border-b border-gray-900">
+        <header class="w-full p-4 flex justify-between items-center z-20 bg-dark-black/90 sticky top-0 border-b border-crimson-red/30">
+            <a href="#" class="text-3xl font-serif text-gold-accent logo-text-shadow">Sultry Playground</a>
+            <nav class="space-x-8 hidden md:flex">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#library" class="nav-link">The Archive</a>
+                <a href="#alchemist" class="nav-link">AI Alchemist</a>
+                <a href="#membership" class="nav-link button-glow-gold px-4 py-2">Membership</a>
+            </nav>
+            <button class="md:hidden text-2xl text-gold-accent"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <section id="home" class="h-screen flex items-center justify-center relative overflow-hidden text-center p-4">
+            <div class="absolute inset-0 z-0 bg-hero-gradient"></div>
             
-            <!-- Dynamic Background Visuals (Placeholders for Cinematic Effect) -->
-            <div class="absolute w-full h-full pointer-events-none overflow-hidden">
-                <!-- Use placehold.co for image fallbacks -->
-                <img class="absolute top-0 left-0 h-full w-auto object-cover opacity-15 blur-sm hidden lg:block" 
-                     src="https://placehold.co/800x1200/220000/FF0033?text=BOLD+FANTASY+SCENE" 
-                     alt="Cinematic Background 1"
-                     onerror="this.style.display='none'"> 
-
-                <img class="absolute bottom-0 right-0 h-full w-auto object-cover opacity-15 blur-sm hidden lg:block" 
-                     src="https://placehold.co/800x1200/08001a/9900FF?text=BOLD+CYBERPUNK+SCENE" 
-                     alt="Cinematic Background 2"
-                     onerror="this.style.display='none'">
-            </div>
-
-            <!-- Foreground Content -->
-            <div class="container relative z-10 max-w-4xl mx-auto">
-                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight" style="font-family: 'Michroma', sans-serif;">
-                    Forge Your Fantasies.
-                    <span class="text-red-neon block mt-2">
-                        Beyond the Page.
-                    </span>
+            <div class="z-10 max-w-5xl">
+                <h1 class="text-7xl md:text-8xl font-serif font-bold leading-tight text-white title-glow-shadow">
+                    Where Desire Takes <span class="text-gold-accent">Shape</span>
                 </h1>
-                <p class="text-lg sm:text-xl opacity-80 mb-10 max-w-2xl mx-auto">
-                    Create **Bold Adult Stories** in English, Hindi, or Urdu with AI. Instantly generate detailed narratives, dialogue, and conceptual video/audio.
+                <p class="mt-4 text-2xl font-light text-gray-300 max-w-3xl mx-auto">
+                    Craft breathtaking, uncensored stories and cinematic visuals with our proprietary AI engine.
                 </p>
-                <a href="#generator" class="cta-button primary-cta sm:w-auto sm:inline-block">
-                    Start Creating Now
-                </a>
-                <p class="mt-4 text-sm opacity-60">Requires free Gemini API Key for full functionality.</p>
+                <button class="mt-10 px-10 py-4 text-xl button-glow-crimson transform hover:scale-105 transition-transform duration-500">
+                    Start Your Creation
+                </button>
             </div>
         </section>
 
-        <!-- --- 2. Story Generator Section --- -->
-        <section id="generator" class="py-20 container">
-            <h2 class="text-4xl font-bold text-center mb-12 text-purple-neon" style="font-family: 'Michroma', sans-serif;">
-                The Forge: Text to Cinematic Story
-            </h2>
-            <div class="bg-dark-gray p-6 sm:p-10 rounded-xl border border-purple-accent/50 shadow-xl">
-                <label for="prompt-input" class="block text-lg font-medium mb-3">Your Core Idea (Use Hindi, Urdu, or English)</label>
-                <textarea id="prompt-input" rows="4" placeholder="Describe your scene, characters, and desired tone here..."
-                    class="w-full p-4 mb-3 bg-black text-white border border-purple-accent/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-accent transition"
-                >A rogue assassin discovers a hidden magical library in the cyberpunk city, seeking knowledge to reverse a curse placed on her. Her handler attempts to stop her.</textarea>
+        <section id="features" class="py-20 bg-[#0c0c0c] text-center">
+            <h2 class="text-5xl font-serif text-white mb-12">The Tools of Imagination</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+                
+                <div class="feature-card">
+                    <i class="fas fa-pen-fancy text-6xl icon-glow mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2 text-gold-accent">The Private Muse</h3>
+                    <p class="text-gray-400">Unlimited, interactive story generation with custom characters and plots.</p>
+                </div>
 
-                <!-- AI Helper Buttons (Real working AI features) -->
-                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 mb-6">
-                    <button onclick="refinePromptWithGemini()" class="w-full llm-helper-button flex-1">
-                        ✨ Narrative Refiner (Get cinematic ideas)
-                    </button>
-                    <button onclick="generateDialogueScript()" class="w-full llm-helper-button flex-1">
-                        ✨ Dialogue Script Forge (Generate a tense conversation)
-                    </button>
+                <div class="feature-card">
+                    <i class="fas fa-video text-6xl icon-glow mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2 text-gold-accent">Cinematic Alchemist</h3>
+                    <p class="text-gray-400">Transform scenes into high-resolution, animated visual masterpieces.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-microphone-alt text-6xl icon-glow mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2 text-gold-accent">Voice of Velvet</h3>
+                    <p class="text-gray-400">Select professional AI voices for seductive, immersive audio experiences.</p>
                 </div>
                 
-                <!-- LLM Output Display -->
-                <div id="llm-output-container" class="mb-6">
-                    <!-- AI output and TTS player will be displayed here -->
-                </div>
-
-
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <select id="quality-select" class="w-full sm:w-1/3 p-3 bg-black text-white border border-purple-accent/30 rounded-lg appearance-none cursor-pointer transition">
-                        <option value="720p">Standard Quality (720p - Free)</option>
-                        <option value="1080p">HD Quality (1080p - Premium)</option>
-                        <option value="4K_PREMIUM">Cinematic 4K (Premium Max)</option>
-                    </select>
-
-                    <!-- Main Generation Button (Simulates video/music generation) -->
-                    <button onclick="handleGeneration()" class="w-full sm:w-2/3 cta-button primary-cta">
-                        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        Forge Story & Video
-                    </button>
-                </div>
-            </div>
-
-            <!-- Conceptual Status Box for the simulated video process -->
-            <div id="status-message" class="mt-8 p-4 rounded-lg text-center bg-gray-900 border border-gray-700 hidden transition-all duration-500">
-                Processing...
             </div>
         </section>
 
-        <!-- --- Footer --- -->
-        <footer class="container py-8 text-center text-sm opacity-60 border-t border-gray-900 mt-10">
-            <p>&copy; 2025 Fantasy Forge AI. All rights reserved. | <a href="#" class="hover:text-red-accent">Terms</a> | <a href="#" class="hover:text-red-accent">Privacy</a></p>
-            <p class="mt-2">Free site hosted via GitHub Pages.</p>
+        <footer class="py-8 bg-dark-black border-t border-crimson-red/30 text-center text-gray-500">
+            <p>&copy; 2025 Sultry Playground. All Content is Fictional, Simulated, and AI-Generated. | <a href="#" class="text-gray-400 hover:text-crimson-red">TOS</a> | <a href="#" class="text-gray-400 hover:text-crimson-red">Compliance</a></p>
         </footer>
 
     </div>
 
     <script>
-        // --- CORE CONFIGURATION & SETUP ---
-        const ageGateOverlay = document.getElementById('age-gate-overlay');
-        const confirmAgeBtn = document.getElementById('confirm-age-btn');
-        const mainContent = document.getElementById('main-content');
-        const statusMessage = document.getElementById('status-message');
-        const promptInput = document.getElementById('prompt-input');
-        const llmOutputContainer = document.getElementById('llm-output-container');
-        
-        // Gemini API Configuration
-        // IMPORTANT: Replace the empty string below with your actual Gemini API Key
-        const apiKey = ""; 
-        const apiUrlBase = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent";
-
-        // Global state for dialogue, used by the TTS playback feature
-        let lastGeneratedDialogue = [];
-
-        // Define voices for the demo characters (You can choose from the TTS voice list)
-        const VOICE_MAP = {
-            'Agent': 'Puck',    // Upbeat, quick voice
-            'Handler': 'Kore'   // Firm, mature voice
-        };
-
-        // --- UTILITY FUNCTIONS ---
-
-        /** * Custom Fetch with Exponential Backoff for Robust API Calls
-         * Handles transient network/rate limit errors automatically.
-         */
-        async function exponentialBackoffFetch(url, options, retries = 3, delay = 1000) {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (response.ok) {
-                        return response;
-                    }
-                    if (response.status === 429 && i < retries - 1) { // Rate limit
-                        await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
-                        continue;
-                    }
-                    const errorText = await response.text();
-                    throw new Error(`HTTP error! Status: ${response.status}. Body: ${errorText.substring(0, 100)}...`);
-                } catch (error) {
-                    if (i === retries - 1) throw error;
-                    await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
-                }
-            }
-            throw new Error("API request failed after all retries.");
-        }
-        
-        /** Custom Message Box (Replaces alert/confirm) */
-        function showCustomMessage(message, type = 'info') {
-            const tempDiv = document.createElement('div');
-            tempDiv.className = 'fixed inset-x-0 top-0 p-4 text-center z-[100]';
-            let bgColor = (type === 'error') ? 'bg-red-900 border-red-700' : 'bg-gray-800 border-gray-700';
+        document.addEventListener('DOMContentLoaded', () => {
+            const ageGate = document.getElementById('age-gate');
+            const mainContent = document.getElementById('main-content');
+            const ageYes = document.getElementById('age-yes');
             
-            tempDiv.innerHTML = `<div class="inline-block px-6 py-3 rounded-xl shadow-2xl ${bgColor} border text-white transition duration-500 ease-in-out transform translate-y-0">${message}</div>`;
-            document.body.appendChild(tempDiv);
-            setTimeout(() => {
-                tempDiv.style.opacity = '0';
-                setTimeout(() => tempDiv.remove(), 500);
-            }, 3000);
-        }
+            // Check if the age cookie exists
+            const isAgeConfirmed = document.cookie.split(';').some((item) => item.trim().startsWith('age_confirmed=true'));
 
-        function showLLMLoading(message) {
-            llmOutputContainer.innerHTML = `
-                <div class="flex items-center justify-center p-4 text-purple-neon border border-purple-accent/30 rounded-lg">
-                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    ${message}
-                </div>
-            `;
-        }
-
-        function clearLLMOutput() {
-            llmOutputContainer.innerHTML = '';
-        }
-
-        // --- TTS AUDIO UTILITIES (Required for playing raw PCM audio) ---
-
-        function base64ToArrayBuffer(base64) {
-            const binaryString = atob(base64);
-            const len = binaryString.length;
-            const bytes = new Uint8Array(len);
-            for (let i = 0; i < len; i++) {
-                bytes[i] = binaryString.charCodeAt(i);
+            if (isAgeConfirmed) {
+                // If confirmed, hide the gate and show content immediately
+                ageGate.style.display = 'none';
+                mainContent.style.opacity = '1';
+            } else {
+                // If not confirmed, show the age gate
+                ageGate.style.display = 'flex';
+                
+                ageYes.addEventListener('click', () => {
+                    // Set a cookie for 30 days (for convenience, not true legal verification)
+                    const date = new Date();
+                    date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+                    document.cookie = `age_confirmed=true; expires=${date.toUTCString()}; path=/`;
+                    
+                    // Fade out age gate and fade in main content
+                    ageGate.style.opacity = '0';
+                    setTimeout(() => {
+                        ageGate.style.display = 'none';
+                        mainContent.style.opacity = '1';
+                    }, 500); // Match CSS transition time
+                });
             }
-            return bytes.buffer;
-        }
-
-        function writeString(view, offset, str) {
-            for (let i = 0; i < str.length; i++) {
-                view.setUint8(offset + i, str.charCodeAt(i));
-            }
-        }
-
-        function writeInt(view, offset, value) { view.setUint32(offset, value, true); }
-        function writeShort(view, offset, value) { view.setUint16(offset, value, true); }
-
-        /** Converts raw PCM 16-bit audio data to a playable WAV Blob. */
-        function pcmToWav(pcm16, sampleRate) {
-            const numChannels = 1; 
-            const bitsPerSample = 16;
-            const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
-            
-            const buffer = new ArrayBuffer(44 + pcm16.length * 2);
-            const view = new DataView(buffer);
-
-            // RIFF chunk
-            writeString(view, 0, 'RIFF');
-            writeInt(view, 4, 36 + pcm16.length * 2); 
-            writeString(view, 8, 'WAVE');
-
-            // fmt chunk
-            writeString(view, 12, 'fmt ');
-            writeInt(view, 16, 16);             
-            writeShort(view, 20, 1);            // PCM format
-            writeShort(view, 22, numChannels);  
-            writeInt(view, 24, sampleRate);     
-            writeInt(view, 28, byteRate);       
-            writeShort(view, 32, numChannels * (bitsPerSample / 8)); // Block Align
-            writeShort(view, 34, bitsPerSample);
-
-            // data chunk
-            writeString(view, 36, 'data');
-            writeInt(view, 40, pcm16.length * 2); 
-
-            // Write PCM data
-            let offset = 44;
-            for (let i = 0; i < pcm16.length; i++) {
-                view.setInt16(offset, pcm16[i], true); 
-                offset += 2;
-            }
-
-            return new Blob([buffer], { type: 'audio/wav' });
-        }
-
-
-        // --- CORE GEMINI LLM FEATURES ---
-
-        /**
-         * 1. Narrative Refiner: Makes the user's prompt professional and cinematic.
-         */
-        async function refinePromptWithGemini() {
-            const userQuery = promptInput.value.trim();
-            if (!userQuery) {
-                showCustomMessage("Please enter a core idea first to refine it.", 'error');
-                return;
-            }
-            
-            showLLMLoading("Narrative Refiner thinking up cinematic details...");
-            clearLLMOutput();
-            lastGeneratedDialogue = []; 
-            
-            const systemPrompt = `You are a world-class Cinematic Story Editor for an adult fantasy platform. Your task is to take a user's simple story idea and refine it into a detailed, visually descriptive prompt. Enhance the mood, setting, lighting, tone, and action. Provide the refined prompt as a single, powerful paragraph for a text-to-video AI model. Maintain a mature, bold tone. IMPORTANT: The user may provide the prompt in Hindi or Urdu; ensure your output is also highly descriptive and professional, regardless of the input language.`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
-
-            try {
-                const response = await exponentialBackoffFetch(`${apiUrlBase}?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    bod
+        });
+    </script>
+</body>
+</html>
